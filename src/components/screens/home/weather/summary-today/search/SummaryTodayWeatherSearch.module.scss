@@ -1,0 +1,97 @@
+@import '@/assets/styles/variables';
+@import '@/assets/styles/mixins';
+
+.weather__search {
+	@include animation-opacity;
+
+	position: relative;
+
+	> div {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+
+		> button {
+			@include transition(opacity);
+
+			padding: 10px 10px 5px;
+			border-radius: 50%;
+
+			&:hover {
+				opacity: 0.7;
+			}
+
+			&:disabled {
+				opacity: 1;
+			}
+		}
+	}
+
+	> button {
+		background-color: transparent;
+		padding: 5px 5px 0;
+
+		position: absolute;
+		top: calc(100% + 20px);
+		right: 0;
+		z-index: 3;
+	}
+
+	> ul {
+		width: 100%;
+		overflow: hidden;
+		background-color: $white;
+		padding: 20px 20px 20px 30px;
+		-webkit-box-shadow: $box-shadow;
+		box-shadow: $box-shadow;
+		border-radius: 10px;
+		position: absolute;
+		top: calc(100% + 20px);
+		z-index: 2;
+
+		> li {
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+
+			> a {
+				@include transition(color);
+
+				&:hover {
+					color: $gray;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 1280px) {
+		-ms-flex-item-align: end;
+		align-self: flex-end;
+	}
+
+	@media (max-width: 650px) {
+		-ms-flex-item-align: start;
+		align-self: flex-start;
+		width: 100%;
+		> div {
+			> label {
+				-webkit-box-flex: 1;
+				-ms-flex-positive: 1;
+				flex-grow: 1;
+			}
+		}
+	}
+
+	@media (max-width: 450px) {
+		> div {
+			> label {
+				> input {
+					width: 150px;
+				}
+			}
+		}
+	}
+}
